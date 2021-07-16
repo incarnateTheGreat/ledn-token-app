@@ -142,8 +142,10 @@ button {
       justify-content: space-between;
 
       &-filters {
+        background-color: rgba($base-header-colour, 0.1);
         display: flex;
         justify-content: space-between;
+        padding: 10px;
         width: 730px;
       }
 
@@ -239,11 +241,16 @@ button {
   .App {
     .ledn-token-filter-container {
       align-items: flex-start;
-      flex-direction: column;
+      flex-direction: column-reverse;
+
+      &-excel {
+        margin: 10px 0 0 auto;
+        justify-self: flex-end;
+      }
 
       &-filters {
         flex-direction: column-reverse;
-        width: 100%;
+        width: -webkit-fill-available;
 
         > * {
           margin: 0 0 10px;

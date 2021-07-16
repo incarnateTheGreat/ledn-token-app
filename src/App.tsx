@@ -161,7 +161,7 @@ const App = () => {
           </div>
         )}
         <div className="ledn-token-filter-container">
-          <div>
+          <div className="ledn-token-filter-container-excel">
             {accountsData?.data.length > 0 && (
               <CSVLink
                 className={"excel-icon"}
@@ -175,6 +175,7 @@ const App = () => {
           </div>
           <div className="ledn-token-filter-container-filters">
             <button
+              className="--border"
               type="button"
               title="Clear all filters"
               onClick={() => clearFilters()}
