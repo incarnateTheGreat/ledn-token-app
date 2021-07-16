@@ -1,70 +1,12 @@
 @import "./variables";
-
-html {
-  font-family: "Inter", sans-serif;
-}
-
-html,
-body {
-  background-color: rgb(240, 243, 246);
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-}
-
-a,
-.link {
-  color: $link-color;
-  cursor: pointer;
-  font-size: $size-14;
-  text-decoration: none;
-  transition: all 0.15s;
-  white-space: nowrap;
-
-  &:hover {
-    color: $link-color-light;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-button {
-  background-color: transparent;
-  box-shadow: none;
-  border: 0;
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 4px 10px;
-  text-align: center;
-  transition: 100ms ease-in;
-
-  &.--border {
-    border: 1px solid;
-  }
-
-  &:hover,
-  &.active {
-    background-color: $base-header-colour;
-    color: $white;
-  }
-
-  &:disabled,
-  &[disabled] {
-    cursor: default;
-    pointer-events: none;
-  }
-}
+@import "./defaults";
+@import "../components/Filters/filters.component";
+@import "../components/Pagination/pagination.component";
 
 .App {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 
   .excel-icon {
     margin: 0 0 0 2px;
@@ -132,38 +74,11 @@ button {
     display: flex;
     flex-direction: column;
     font-size: $size-12;
+    height: 100vh;
     margin: 0 auto;
+    overflow-y: scroll;
     padding: 10px 0 20px;
     width: 98%;
-
-    &-filter-container {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-
-      &-filters {
-        background-color: rgba($base-header-colour, 0.1);
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        width: 730px;
-      }
-
-      label {
-        padding: 0 4px 0 0;
-      }
-
-      select {
-        height: 25px;
-      }
-
-      input[type="search"] {
-        border-radius: 4px;
-        border: 1px solid rgba($border-colour, 0.5);
-        padding: 4px 10px;
-        margin: 0 0 0 4px;
-      }
-    }
 
     &-table {
       padding: 10px 0;
@@ -201,10 +116,6 @@ button {
           }
         }
       }
-
-      &-pagination {
-        margin-left: auto;
-      }
     }
 
     &-no-data {
@@ -212,6 +123,18 @@ button {
       display: flex;
       height: inherit;
       justify-content: center;
+    }
+  }
+
+  .footer {
+    background: $base-header-colour;
+    color: $white;
+    display: flex;
+
+    &-container {
+      display: flex;
+      font-size: $size-12;
+      padding: 20px;
     }
   }
 }
@@ -234,32 +157,5 @@ button {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .App {
-    .ledn-token-filter-container {
-      align-items: flex-start;
-      flex-direction: column-reverse;
-
-      &-excel {
-        margin: 10px 0 0 auto;
-        justify-self: flex-end;
-      }
-
-      &-filters {
-        flex-direction: column-reverse;
-        width: -webkit-fill-available;
-
-        > * {
-          margin: 0 0 10px;
-        }
-
-        button {
-          width: 100%;
-        }
-      }
-    }
   }
 }
