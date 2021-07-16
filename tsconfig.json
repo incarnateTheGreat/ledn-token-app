@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+      "sourceMap": true,
+      "target": "es5",
+      "jsx": "react",
+      "module": "es2020",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "declaration": false,
+      "removeComments": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "strict": true,
+      "outDir": "build",
+      "lib": ["es6", "es7", "dom", "es2019"],
+      "baseUrl": "src",
+      "paths": {
+        "utils/*": ["./app/utils/*"],
+        "app/*": ["./app/*"],
+        "assets/*": ["./assets/*"]
+      },
+      "allowSyntheticDefaultImports": true,
+      "noImplicitAny": false,
+      "resolveJsonModule": true,
+      "downlevelIteration": true,
+      "strictNullChecks": false,
+      "noUnusedParameters": true
+    },
+    "exclude": ["build", "node_modules"]
+  }
+  
