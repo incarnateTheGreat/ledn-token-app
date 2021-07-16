@@ -26,7 +26,7 @@ yarn
 
 ## Running the Server
 
-After the dependencies have been installed, you will need to start `json-server`; it's required in order to connect to the data.
+After the dependencies have been installed, you will need to start `json-server`; it's required in order to connect to the data. This should be executed in a separate Terminal window.
 
 ```
 npm run json:server
