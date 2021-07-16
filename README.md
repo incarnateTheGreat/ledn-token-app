@@ -7,9 +7,9 @@ The Ledn Token dashboard application helps better visualize the token holders' a
 Run the following from the Command Line:
 
 ```
-git clone https://github.com/gtsaconas-varicent/ledn-token.git
+git clone https://github.com/incarnateTheGreat/ledn-token-app.git
 
-cd ledn-token
+cd ledn-token-app
 ```
 
 Once the above steps are complete, download the latest dependencies by running:
