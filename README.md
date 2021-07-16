@@ -30,4 +30,4 @@ To start the app:
 npm run start or yarn start
 ```
 
-Thanks!
+Thanks!!
