@@ -24,6 +24,8 @@ or
 yarn
 ```
 
+## Running the Server
+
 After the dependencies have been installed, you will need to start `json-server`; it's required in order to connect to the data.
 
 ```
@@ -36,10 +38,16 @@ or
 yarn json:server
 ```
 
+## Starting the App
+
 To start the app:
 
 ```
-npm run start or yarn start
+npm run start
 ```
 
-Thanks!!
+or
+
+```
+yarn start
+```
