@@ -1,3 +1,4 @@
+// Parse an ISO date time stamp into readible English.
 export const dateTimeFormat = (dateToParse) => {
   const date = new Date(dateToParse);
 
@@ -12,6 +13,7 @@ export const dateTimeFormat = (dateToParse) => {
   return dateTimeFormat.format(date);
 };
 
+// Create URL Params.
 export const encodeQueryData = (objectToParse) => {
   const params = [];
 
@@ -24,6 +26,7 @@ export const encodeQueryData = (objectToParse) => {
   return params.join("&");
 };
 
+// Parse the Link Headers that come from the server call.
 export const parseLinkHeader = (linkHeader) => {
   const linkHeadersArray = linkHeader
     .split(", ")
