@@ -154,7 +154,8 @@ const App = () => {
             </div>
           )}
           <Filters />
-          <Pagination />
+          {accountsData?.data.length > 0 && <Pagination />}
+
           {!loading && accountsData?.data.length > 0 && (
             <>
               <table className="ledn-token-table">
@@ -225,13 +226,21 @@ const App = () => {
                   })}
                 </tbody>
               </table>
-              <Pagination />
+
+              {accountsData?.data.length > 0 && <Pagination />}
             </>
           )}
 
           {!loading && accountsData?.data.length === 0 && (
             <div className="ledn-token-no-data">
               Sorry. There are no results.
+            </div>
+          )}
+
+          {!loading && !accountsData && (
+            <div className="ledn-token-no-data">
+              Sorry. There is a disruption with the server. Please try again
+              later.
             </div>
           )}
         </section>
