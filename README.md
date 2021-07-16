@@ -15,13 +15,25 @@ cd ledn-token-app
 Once the above steps are complete, download the latest dependencies by running:
 
 ```
-npm install or yarn
+npm install
 ```
 
-After the dependencies have been installed, you will need to start `json-server`. It is required to connect to the data.
+or
 
 ```
-npm run json:server or yarn json:server
+yarn
+```
+
+After the dependencies have been installed, you will need to start `json-server`; it's required in order to connect to the data.
+
+```
+npm run json:server
+```
+
+or
+
+```
+yarn json:server
 ```
 
 To start the app:
