@@ -155,19 +155,21 @@ const App = () => {
             </div>
           )}
           <Filters />
-          {accountsData?.data.length > 0 && <Pagination />}
 
           {!loading && accountsData?.data.length > 0 && (
-            <>
-              <table className="ledn-token-table">
+            <article className="ledn-token-accounts">
+              {accountsData?.data.length > 0 && <Pagination />}
+              <table className="ledn-token-accounts-table">
                 <thead>
                   <tr>
-                    <th>{TABLE.FIRST_NAME}</th>
-                    <th>{TABLE.LAST_NAME}</th>
-                    <th>{TABLE.COUNTRY}</th>
-                    <th>{TABLE.EMAIL}</th>
-                    <th>{TABLE.DATE_OF_BIRTH}</th>
-                    <th>{TABLE.MULTI_FACTOR_AUTH_TYPE}</th>
+                    <th title={TABLE.FIRST_NAME}>{TABLE.FIRST_NAME}</th>
+                    <th title={TABLE.LAST_NAME}>{TABLE.LAST_NAME}</th>
+                    <th title={TABLE.COUNTRY}>{TABLE.COUNTRY}</th>
+                    <th title={TABLE.EMAIL}>{TABLE.EMAIL}</th>
+                    <th title={TABLE.DATE_OF_BIRTH}>{TABLE.DATE_OF_BIRTH}</th>
+                    <th title={TABLE.MULTI_FACTOR_AUTH_TYPE}>
+                      {TABLE.MULTI_FACTOR_AUTH_TYPE}
+                    </th>
                     <th
                       className="sortableHeader"
                       onClick={() => {
@@ -178,6 +180,7 @@ const App = () => {
                       <span>{assignSortArrow("amt")}</span>
                     </th>
                     <th
+                      title={TABLE.CREATION_DATE}
                       className="sortableHeader"
                       onClick={() => {
                         sortData("createdDate");
@@ -186,7 +189,7 @@ const App = () => {
                       <span>{TABLE.CREATION_DATE}</span>
                       <span>{assignSortArrow("createdDate")}</span>
                     </th>
-                    <th>{TABLE.REFERRED_BY}</th>
+                    <th title={TABLE.REFERRED_BY}>{TABLE.REFERRED_BY}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -227,17 +230,20 @@ const App = () => {
                   })}
                 </tbody>
               </table>
-
               {accountsData?.data.length > 0 && <Pagination />}
-            </>
+            </article>
           )}
 
           {!loading && accountsData?.data.length === 0 && (
-            <div className="ledn-token-no-data">{ERRORS.NO_RESULTS}</div>
+            <div className="ledn-token-accounts-no-data">
+              {ERRORS.NO_RESULTS}
+            </div>
           )}
 
           {!loading && !accountsData && (
-            <div className="ledn-token-no-data">{ERRORS.SERVER_ERROR}</div>
+            <div className="ledn-token-accounts-no-data">
+              {ERRORS.SERVER_ERROR}
+            </div>
           )}
         </section>
         <footer className="footer">

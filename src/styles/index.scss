@@ -8,15 +8,6 @@
   flex-direction: column;
   height: 100vh;
 
-  .excel-icon {
-    margin: 0 0 0 2px;
-    width: 20px;
-
-    img {
-      width: inherit;
-    }
-  }
-
   .loading {
     align-items: center;
     display: flex;
@@ -74,58 +65,61 @@
     flex-direction: column;
     font-size: $size-12;
     height: 100vh;
-    margin: 0 auto;
     overflow-y: scroll;
-    padding: 10px 0 20px;
-    width: 98%;
 
-    &-table {
-      padding: 10px 0;
-      table-layout: fixed;
-      width: 100%;
+    &-accounts {
+      padding: 20px;
 
-      thead {
-        th {
-          text-align: left;
-          padding: 4px 8px;
+      &-table {
+        table-layout: fixed;
+        width: 100%;
 
-          &.sortableHeader {
-            cursor: pointer;
+        thead {
+          th {
+            padding: 4px 8px;
+            text-align: left;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
 
-            &:hover {
-              background-color: rgba($base-header-colour, 0.1);
+            &.sortableHeader {
+              cursor: pointer;
+
+              &:hover {
+                background-color: rgba($base-header-colour, 0.1);
+              }
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            border-top: 1px solid $border-colour;
+            border-bottom: 1px solid $border-colour;
+
+            &:nth-of-type(odd) {
+              background-color: $table-row;
+            }
+
+            td {
+              padding: 6px 10px;
+              word-break: break-all;
+              width: 100%;
+
+              &.selectedColumn {
+                background-color: $selected-column;
+              }
             }
           }
         }
       }
 
-      tbody {
-        tr {
-          border-top: 1px solid $border-colour;
-          border-bottom: 1px solid $border-colour;
-
-          &:nth-of-type(odd) {
-            background-color: $table-row;
-          }
-
-          td {
-            padding: 6px 10px;
-            word-break: break-all;
-            width: 100%;
-
-            &.selectedColumn {
-              background-color: $selected-column;
-            }
-          }
-        }
+      &-no-data {
+        align-items: center;
+        display: flex;
+        height: inherit;
+        justify-content: center;
       }
-    }
-
-    &-no-data {
-      align-items: center;
-      display: flex;
-      height: inherit;
-      justify-content: center;
     }
   }
 

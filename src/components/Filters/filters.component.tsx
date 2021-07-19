@@ -51,69 +51,75 @@ const Filters = () => {
 
   return (
     <div className="ledn-token-filter-container">
-      <div className="ledn-token-filter-container-excel">
-        {accountsData?.data.length > 0 && (
-          <CSVLink
-            className={"excel-icon"}
-            data={accountsData?.data}
-            headers={headers}
-            title={FILTERS.DOWNLOAD_CSV}
-          >
-            <img src="../icons/excel-icon.png" alt={FILTERS.DOWNLOAD_CSV} />
-          </CSVLink>
-        )}
-      </div>
       <div className="ledn-token-filter-container-filters">
-        <button
-          className="--border"
-          type="button"
-          title={FILTERS.CLEAR_ALL_FILTERS}
-          onClick={() => clearFilters()}
-        >
-          {FILTERS.CLEAR_ALL_FILTERS}
-        </button>
-        <div>
-          <label htmlFor="accounts-per-page">{FILTERS.ACCOUNTS_PER_PAGE}</label>
-          <select
-            name="accounts-per-page"
-            id="accounts-per-page"
-            onChange={(e) => {
-              setAccountsPerPage(+e.target.value);
-            }}
-            defaultValue={10}
-          >
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+        <div className="ledn-token-filter-container-filters-excel">
+          {accountsData?.data.length > 0 && (
+            <CSVLink
+              className={"ledn-token-filter-container-filters-excel-icon"}
+              data={accountsData?.data}
+              headers={headers}
+              title={FILTERS.DOWNLOAD_CSV}
+            >
+              <img src="../icons/excel-icon.png" alt={FILTERS.DOWNLOAD_CSV} />
+            </CSVLink>
+          )}
         </div>
-        <div>
-          <label htmlFor="filter-by">{FILTERS.FILTER_BY}</label>
-          <select
-            name="filter-by"
-            id="filter-by"
-            onChange={(e) => {
-              clearFilters();
-              setFilterBy(e.target.value);
-            }}
-            defaultValue={TABLE.FIRST_NAME}
-          >
-            <option value={TABLE.FIRST_NAME}>{TABLE.FIRST_NAME}</option>
-            <option value={TABLE.LAST_NAME}>{TABLE.LAST_NAME}</option>
-            <option value={TABLE.COUNTRY}>{TABLE.COUNTRY}</option>
-            <option value="mfa">{TABLE.MULTI_FACTOR_AUTH_TYPE}</option>
-          </select>
-          <input
-            type="search"
-            placeholder={`Search ${filterBy}`}
-            value={searchInput}
-            onChange={(e) => {
-              setLoading(true);
-              debounceSearchInputHandler(e.target.value);
-              setSearchInput(e.target.value);
-            }}
-          />
+        <div className="ledn-token-filter-container-filters-container">
+          <div>
+            <button
+              className="--border"
+              type="button"
+              title={FILTERS.CLEAR_ALL_FILTERS}
+              onClick={() => clearFilters()}
+            >
+              {FILTERS.CLEAR_ALL_FILTERS}
+            </button>
+          </div>
+          <div>
+            <label htmlFor="accounts-per-page">
+              {FILTERS.ACCOUNTS_PER_PAGE}
+            </label>
+            <select
+              name="accounts-per-page"
+              id="accounts-per-page"
+              onChange={(e) => {
+                setAccountsPerPage(+e.target.value);
+              }}
+              defaultValue={10}
+            >
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="filter-by">{FILTERS.FILTER_BY}</label>
+            <select
+              name="filter-by"
+              id="filter-by"
+              onChange={(e) => {
+                clearFilters();
+                setFilterBy(e.target.value);
+              }}
+              defaultValue={TABLE.FIRST_NAME}
+            >
+              <option value={TABLE.FIRST_NAME}>{TABLE.FIRST_NAME}</option>
+              <option value={TABLE.LAST_NAME}>{TABLE.LAST_NAME}</option>
+              <option value={TABLE.COUNTRY}>{TABLE.COUNTRY}</option>
+              <option value="mfa">{TABLE.MULTI_FACTOR_AUTH_TYPE}</option>
+            </select>
+            <input
+              type="search"
+              placeholder={`Search ${filterBy}`}
+              value={searchInput}
+              onChange={(e) => {
+                setLoading(true);
+                debounceSearchInputHandler(e.target.value);
+                setSearchInput(e.target.value);
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
