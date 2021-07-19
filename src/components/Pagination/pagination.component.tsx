@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { PAGINATION } from "../../utils/messages";
-import { LednTokenContext } from "../../interfaces/interfaces";
+import { PAGINATION } from "utils/messages";
+import { LednTokenContext } from "interfaces/interfaces";
 
 const Pagination = () => {
   const {

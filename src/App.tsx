@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useEffect, useState } from "react";
-import { dateTimeFormat, encodeQueryData } from "./utils/utils";
-import { GENERAL, TABLE, ERRORS } from "./utils/messages";
-import { getAccountsData } from "./api/api";
+import { dateTimeFormat, encodeQueryData } from "utils/utils";
+import { GENERAL, TABLE, ERRORS } from "utils/messages";
+import { getAccountsData } from "api/api";
 import {
   AccountsDataResponse,
   LednTokenContext,

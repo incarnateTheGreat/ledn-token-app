@@ -16,9 +16,10 @@
       "lib": ["es6", "es7", "dom", "es2019"],
       "baseUrl": "src",
       "paths": {
-        "utils/*": ["./app/utils/*"],
-        "app/*": ["./app/*"],
-        "assets/*": ["./assets/*"]
+        "@app/*": ["app/*"],
+        "@utils/*": ["app/utils/*"],
+        "@interfaces/*": ["app/interfaces/*"],
+        "@assets/*": ["assets/*"]
       },
       "allowSyntheticDefaultImports": true,
       "noImplicitAny": false,

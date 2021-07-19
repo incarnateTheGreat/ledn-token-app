@@ -1,8 +1,8 @@
 import React, { useCallback, useContext } from "react";
 import { CSVLink } from "react-csv";
 import debounce from "lodash.debounce";
-import { LednTokenContext } from "../../interfaces/interfaces";
-import { FILTERS, TABLE } from "../../utils/messages";
+import { LednTokenContext } from "interfaces/interfaces";
+import { FILTERS, TABLE } from "utils/messages";
 
 const headers = [
   { label: TABLE.FIRST_NAME, key: TABLE.FIRST_NAME_KEY },
