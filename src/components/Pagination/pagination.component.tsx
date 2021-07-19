@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { PAGINATION } from "../../utils/messages";
 import { LednTokenContext } from "../../interfaces/interfaces";
 
 const Pagination = () => {
@@ -17,7 +18,7 @@ const Pagination = () => {
       <button
         disabled={!prevPageNumber}
         type="button"
-        title="Back to the first page"
+        title={PAGINATION.BACK_TO_FIRST_PAGE}
         onClick={() => {
           if (prevPageNumber) {
             setPageNumber(1);

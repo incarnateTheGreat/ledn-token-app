@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useEffect, useState } from "react";
 import { dateTimeFormat, encodeQueryData } from "./utils/utils";
+import { GENERAL, TABLE, ERRORS } from "./utils/messages";
 import { getAccountsData } from "./api/api";
 import {
   AccountsDataResponse,
@@ -144,7 +145,7 @@ const App = () => {
       <div className="App">
         <nav className="nav">
           <div className="nav-container">
-            <h1>Ledn Tracker</h1>
+            <h1>{GENERAL.LEDN_TOKEN}</h1>
           </div>
         </nav>
         <section className="ledn-token">
@@ -161,19 +162,19 @@ const App = () => {
               <table className="ledn-token-table">
                 <thead>
                   <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Country</th>
-                    <th>Email</th>
-                    <th>Date of Birth</th>
-                    <th>Multi-factor Authentication Type</th>
+                    <th>{TABLE.FIRST_NAME}</th>
+                    <th>{TABLE.LAST_NAME}</th>
+                    <th>{TABLE.COUNTRY}</th>
+                    <th>{TABLE.EMAIL}</th>
+                    <th>{TABLE.DATE_OF_BIRTH}</th>
+                    <th>{TABLE.MULTI_FACTOR_AUTH_TYPE}</th>
                     <th
                       className="sortableHeader"
                       onClick={() => {
                         sortData("amt");
                       }}
                     >
-                      <span> AMT </span>
+                      <span> {TABLE.AMT} </span>
                       <span>{assignSortArrow("amt")}</span>
                     </th>
                     <th
@@ -182,10 +183,10 @@ const App = () => {
                         sortData("createdDate");
                       }}
                     >
-                      <span> Creation Date </span>
+                      <span>{TABLE.CREATION_DATE}</span>
                       <span>{assignSortArrow("createdDate")}</span>
                     </th>
-                    <th>Referred By</th>
+                    <th>{TABLE.REFERRED_BY}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -232,21 +233,16 @@ const App = () => {
           )}
 
           {!loading && accountsData?.data.length === 0 && (
-            <div className="ledn-token-no-data">
-              Sorry. There are no results.
-            </div>
+            <div className="ledn-token-no-data">{ERRORS.NO_RESULTS}</div>
           )}
 
           {!loading && !accountsData && (
-            <div className="ledn-token-no-data">
-              Sorry. There is a disruption with the server. Please try again
-              later.
-            </div>
+            <div className="ledn-token-no-data">{ERRORS.SERVER_ERROR}</div>
           )}
         </section>
         <footer className="footer">
           <div className="footer-container">
-            &copy; Ledn Token {new Date().getFullYear()}
+            &copy; {GENERAL.LEDN_TOKEN} {new Date().getFullYear()}
           </div>
         </footer>
       </div>

@@ -2,17 +2,21 @@ import React, { useCallback, useContext } from "react";
 import { CSVLink } from "react-csv";
 import debounce from "lodash.debounce";
 import { LednTokenContext } from "../../interfaces/interfaces";
+import { FILTERS, TABLE } from "../../utils/messages";
 
 const headers = [
-  { label: "First Name", key: "First Name" },
-  { label: "Last Name", key: "Last Name" },
-  { label: "Country", key: "Country" },
-  { label: "Email", key: "email" },
-  { label: "Date of Birth", key: "dob" },
-  { label: "Multi-factor Authentication Type", key: "mfa" },
-  { label: "# of Ledn Tokens", key: "amt" },
-  { label: "Creation Date", key: "createdDate" },
-  { label: "Referred By", key: "ReferredBy" },
+  { label: TABLE.FIRST_NAME, key: TABLE.FIRST_NAME_KEY },
+  { label: TABLE.LAST_NAME, key: TABLE.LAST_NAME_KEY },
+  { label: TABLE.COUNTRY, key: TABLE.COUNTRY_KEY },
+  { label: TABLE.EMAIL, key: TABLE.EMAIL_KEY },
+  { label: TABLE.DATE_OF_BIRTH, key: TABLE.DATE_OF_BIRTH_KEY },
+  {
+    label: TABLE.MULTI_FACTOR_AUTH_TYPE,
+    key: TABLE.MULTI_FACTOR_AUTH_TYPE_KEY,
+  },
+  { label: TABLE.AMT, key: TABLE.AMT_KEY },
+  { label: TABLE.CREATION_DATE, key: TABLE.CREATION_DATE_KEY },
+  { label: TABLE.REFERRED_BY, key: TABLE.REFERRED_BY_KEY },
 ];
 
 const Filters = () => {
@@ -26,10 +30,16 @@ const Filters = () => {
     setFilterBy,
     setLoading,
     setSearchInput,
+    setPageNumber,
   } = useContext(LednTokenContext);
 
   const handleSearchInput = (searchString) => {
-    updateURLParams({ [`${filterBy}_like`]: searchString });
+    // When the search input is cleared, go to the first page.
+    if (searchString.length === 0) {
+      setPageNumber(1);
+    }
+
+    updateURLParams({ [`${filterBy}_like`]: searchString, _page: 1 });
     setLoading(false);
   };
 
@@ -47,9 +57,9 @@ const Filters = () => {
             className={"excel-icon"}
             data={accountsData?.data}
             headers={headers}
-            title="Download CSV"
+            title={FILTERS.DOWNLOAD_CSV}
           >
-            <img src="../icons/excel-icon.png" alt="Download CSV" />
+            <img src="../icons/excel-icon.png" alt={FILTERS.DOWNLOAD_CSV} />
           </CSVLink>
         )}
       </div>
@@ -57,13 +67,13 @@ const Filters = () => {
         <button
           className="--border"
           type="button"
-          title="Clear all filters"
+          title={FILTERS.CLEAR_ALL_FILTERS}
           onClick={() => clearFilters()}
         >
-          Clear all filters
+          {FILTERS.CLEAR_ALL_FILTERS}
         </button>
         <div>
-          <label htmlFor="accounts-per-page">Accounts per Page:</label>
+          <label htmlFor="accounts-per-page">{FILTERS.ACCOUNTS_PER_PAGE}</label>
           <select
             name="accounts-per-page"
             id="accounts-per-page"
@@ -79,7 +89,7 @@ const Filters = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="filter-by">Filter by:</label>
+          <label htmlFor="filter-by">{FILTERS.FILTER_BY}</label>
           <select
             name="filter-by"
             id="filter-by"
@@ -87,12 +97,12 @@ const Filters = () => {
               clearFilters();
               setFilterBy(e.target.value);
             }}
-            defaultValue="First Name"
+            defaultValue={TABLE.FIRST_NAME}
           >
-            <option value="First Name">First Name</option>
-            <option value="Last Name">Last Name</option>
-            <option value="Country">Country</option>
-            <option value="mfa">Multi-factor Authentication Type</option>
+            <option value={TABLE.FIRST_NAME}>{TABLE.FIRST_NAME}</option>
+            <option value={TABLE.LAST_NAME}>{TABLE.LAST_NAME}</option>
+            <option value={TABLE.COUNTRY}>{TABLE.COUNTRY}</option>
+            <option value="mfa">{TABLE.MULTI_FACTOR_AUTH_TYPE}</option>
           </select>
           <input
             type="search"
